@@ -1,5 +1,6 @@
 # 1. 选择兼容性好的基础镜像 (如需极致体积可换为 -alpine，但需测试兼容性)
-FROM eclipse-temurin:17-jre AS builder
+FROM eclipse-temurin:17-jdk-alpine
+
 # 使用 JRE 而非 JDK，体积更小，安全性更高（无编译工具）
 
 # 2. 设置工作目录
@@ -19,7 +20,7 @@ USER spring
 # 6. 设置时区 (保留示例2的正确性)
 
 # 7. 暴露端口
-EXPOSE 8082
+EXPOSE 8080
 
 # 8. 启动命令：使用 MaxRAMPercentage 自动适配容器内存限制，而非硬编码 Xmx
 # 同时启用 G1GC 以获得更好的低延迟表现
