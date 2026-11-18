@@ -1,5 +1,6 @@
 # 1. 选择兼容性好的基础镜像 (如需极致体积可换为 -alpine，但需测试兼容性)
 FROM eclipse-temurin:17-jdk-alpine
+FROM eclipse-temurin:17-jdk-alpine
 
 # 使用 JRE 而非 JDK，体积更小，安全性更高（无编译工具）
 
@@ -11,9 +12,8 @@ ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} app.jar
 
 # 4. 创建非 root 用户 (保留示例1的安全性)
-RUN useradd -m -s /bin/bash spring && \
+RUN adduser -D -h /app -s /bin/sh spring && \
     chown -R spring:spring /app
-
 # 5. 切换用户
 USER spring
 
