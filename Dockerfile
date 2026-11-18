@@ -17,11 +17,7 @@ RUN useradd -m -s /bin/bash spring && \
 USER spring
 
 # 6. 设置时区 (保留示例2的正确性)
-ENV TZ=Asia/Shanghai
-# 先删除旧链接，再创建新链接
-RUN rm -f /etc/localtime && \
-    ln -s /usr/share/zoneinfo/$TZ /etc/localtime && \
-    echo $TZ > /etc/timezone
+
 # 7. 暴露端口
 EXPOSE 8082
 
