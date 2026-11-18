@@ -45,7 +45,7 @@ pipeline {
                                 // 注意：这里的 '.' 表示当前目录，Docker 会读取当前目录下的 Dockerfile
                                 // 并且由于 Dockerfile 中写了 COPY target/*.jar，所以 target 目录必须在构建上下文中
                                 sh """
-                                    docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} .
+                                    docker build -t docker.io/springio/${DOCKER_IMAGE_NAME}:latest .
                                 """
                             }
                         }
