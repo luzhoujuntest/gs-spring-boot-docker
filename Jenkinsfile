@@ -9,14 +9,14 @@ pipeline {
     environment {
         // 指定构建产物输出目录，也可以自定义
         BUILD_OUTPUT_DIR = 'target'
-        DOCKER_IMAGE_NAME = "messaging-redis"
+        DOCKER_IMAGE_NAME = "gs-spring-boot-docker"
         DOCKER_IMAGE_TAG = "${env.BUILD_NUMBER}"
         }
     stages {
         stage('拉取代码') {
             steps {
                 checkout scm
-                echo "成功拉取 messaging-redis 项目最新代码"
+                echo "成功拉取 gs-spring-boot-docker 项目最新代码"
             }
         }
         stage('清理构建环境') {
@@ -53,7 +53,7 @@ pipeline {
     }
     post {
         success {
-            echo "messaging-redis 项目 Pipeline 打包全部流程执行成功"
+            echo "gs-spring-boot-docker 项目 Pipeline 打包全部流程执行成功"
         }
         failure {
             echo "打包流程执行失败，请查看日志排查问题"
